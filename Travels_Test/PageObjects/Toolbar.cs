@@ -11,8 +11,7 @@ namespace Travels_Test.PageObjects
         {
             Driver = driver;
         }
-        ////LoginAndLogout////
-
+        #region Locators
         public IWebElement Button_MyAccount => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()=' My Account ']"));
         public IWebElement Button_MyAccountLogin => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()=' Login']"));
         public IWebElement Field_UserName => Driver.FindElement(By.XPath("//input[@placeholder='Email']"));
@@ -20,11 +19,21 @@ namespace Travels_Test.PageObjects
         public IWebElement Button_PushLogin => Driver.FindElement(By.XPath("//*[@id='loginfrm']//button[text()='Login']"));
         public IWebElement AccountDropdown => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()=' DVhbCERv ']"));
         public IWebElement Button_Logout => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()='  Logout']"));
+        public IWebElement CurrencyDropdown => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//li[@id='li_myaccount']/following-sibling::li[@class='dropdown']"));
+        public IWebElement LanguageDropdown => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//li[@id='li_myaccount']/following-sibling::ul[@class='nav navbar-nav']"));
+        #endregion
+        #region ToolBar
+        /// <summary>
+        /// Login Form Opens
+        /// </summary>
         internal void LoginForm()
         {
             Button_MyAccount.Click();
             Button_MyAccountLogin.Click();
         }
+        /// <summary>
+        /// Enter username and password
+        /// </summary>
         internal void LoginPassAndSubmit(TestUserCredentials user)
         {
             Driver.WaitForMeDisplayed(Field_UserName, 20);
@@ -32,25 +41,31 @@ namespace Travels_Test.PageObjects
             Field_UserPassword.SendKeys(user.Password);
             Button_PushLogin.Click();
         }
+        /// <summary>
+        /// User Logging Out
+        /// </summary>
         internal void Logout()
         {
+            Driver.WaitForMeDisplayed(Button_Logout, 20);
             AccountDropdown.Click();
             Button_Logout.Click();
-            Driver.Navigate().GoToUrl("https://www.phptravels.net/");
         }
-        ////Currency////
-        public IWebElement CurrencyDropdown => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//li[@id='li_myaccount']/following-sibling::li[@class='dropdown']"));
+        /// <summary>
+        /// Change of Currency
+        /// </summary>
         internal void ChangeCurrency(string newCurrency)
         {
             CurrencyDropdown.Click();
             Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@onclick='change_currency(this)' and contains(text(), '{0}') ]", newCurrency))).Click();
         }
-        ////Language////
-        public IWebElement LanguageDropdown => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//li[@id='li_myaccount']/following-sibling::ul[@class='nav navbar-nav']"));
+        /// <summary>
+        /// Change of Language
+        /// </summary>
         internal void ChangeLanguage(string newLanguage)
         {
             LanguageDropdown.Click();
             Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@class='go-text-right changelang' and contains(text(), '{0}') ]", newLanguage))).Click();
         }
+        #endregion
     }
 }

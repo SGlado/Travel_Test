@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.IO;
@@ -24,21 +23,21 @@ namespace Travels_Test.Framework
         public BaseTest()
         {
         }
-        [OneTimeSetUp]
-        public void SetupEverySingleClass()
-        {
-            Driver = GetChromeDriver();
-            Driver.Manage().Window.Maximize();
-            Driver.Navigate().GoToUrl("https://www.phptravels.net/");
-            user = new TestUserCredentials();
-            user.Login = "user@phptravels.com";
-            user.Password = "demouser";
-        }
-        [OneTimeTearDown]
-        public void CleanupEverySinglClass()
-        {
-            Driver.Quit();
-        }
+        //[OneTimeSetUp]
+        //public void SetupEverySingleClass()
+        //{
+        //    Driver = GetChromeDriver();
+        //    Driver.Manage().Window.Maximize();
+        //    Driver.Navigate().GoToUrl("https://www.phptravels.net/");
+        //    user = new TestUserCredentials();
+        //    user.Login = "user@phptravels.com";
+        //    user.Password = "demouser";
+        //}
+        //[OneTimeTearDown]
+        //public void CleanupEverySinglClass()
+        //{
+        //    Driver.Quit();
+        //}
 
     }
 }
