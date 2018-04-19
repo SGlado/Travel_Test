@@ -25,7 +25,7 @@ namespace Travels_Test.Tests
         }
         #endregion
         [TestCase]
-        public void Login()
+        public void LoginLogout()
         {
             var LoginPage = new ToolBarObjects(Driver);
             LoginPage.LoginForm();

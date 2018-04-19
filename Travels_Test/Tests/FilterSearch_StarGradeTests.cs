@@ -34,7 +34,7 @@ namespace Travels_Test.Tests
             StarGrade.ChangeStarGrade(starGrade);
             Driver.WaitForMeDisplayed(StarGrade.ApplySearch, 20);
             IWebElement StarGradeCheck = Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//input[@id ='{0}']", starGrade)));
-            Assert.IsTrue(StarGradeCheck.Selected, "oh!");
+            Assert.IsTrue(StarGradeCheck.Selected, "Ooops!");
         }
     }
 }

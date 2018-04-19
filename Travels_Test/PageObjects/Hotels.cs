@@ -12,6 +12,7 @@ namespace Travels_Test.PageObjects
             Driver = driver;
         }
         #region Locators
+        //public IWebElement StarGradeCheck => Driver.FindElement(By.XPath("//div[@class='col-md-3 hidden-sm hidden-xs']//*[@id='searchform']"));
         public IWebElement ApplySearch => Driver.FindElement(By.XPath("//div[@class='col-md-3 hidden-sm hidden-xs']//*[@id='searchform']"));
         #endregion
 
