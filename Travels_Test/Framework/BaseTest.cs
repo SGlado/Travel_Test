@@ -18,7 +18,6 @@ namespace Travels_Test.Framework
         public BaseTest(IWebDriver driver)
         {
             Driver = driver;
-            Driver.Manage().Timeouts().ImplicitWait= TimeSpan.FromSeconds(10);
         }
         public BaseTest()
         {

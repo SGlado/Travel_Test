@@ -1,5 +1,4 @@
-﻿using NUnit.Framework;
-using OpenQA.Selenium;
+﻿using OpenQA.Selenium;
 using System;
 
 namespace Travels_Test.PageObjects
@@ -12,16 +11,25 @@ namespace Travels_Test.PageObjects
             Driver = driver;
         }
         #region Locators
-        //public IWebElement StarGradeCheck => Driver.FindElement(By.XPath("//div[@class='col-md-3 hidden-sm hidden-xs']//*[@id='searchform']"));
-        public IWebElement ApplySearch => Driver.FindElement(By.XPath("//div[@class='col-md-3 hidden-sm hidden-xs']//*[@id='searchform']"));
+        public IWebElement ApplySearch => Driver.FindElement(By.XPath("//*[@id='searchform']"));
+        public IWebElement SelectStarGradeNumber;
         #endregion
 
         #region Filter Search
-        internal void ChangeStarGrade(string newStarGrade)
+        /// <summary>
+        /// Filter --> Changing Hotel Star Count
+        /// </summary>
+        /// <param name="newStarGradeNumber"></param>
+        public void ChangeStarGradeNumber(string newStarGradeNumber)
         {
-            IWebElement StarGradeSelect = Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//*[@for ='{0}']", newStarGrade)));
-            StarGradeSelect.Click();
+            SelectStarGradeNumber = Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//*[@for ='{0}']", newStarGradeNumber)));
+            StarGradeCheckNumber(newStarGradeNumber);
+            SelectStarGradeNumber.Click();
             ApplySearch.Click();
+        }
+        public IWebElement StarGradeCheckNumber(string checkStarGradeNumber)
+        {
+            return  Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//input[@id ='{0}']", checkStarGradeNumber)));
         }
         #endregion
     }

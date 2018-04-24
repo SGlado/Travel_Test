@@ -30,9 +30,9 @@ namespace Travels_Test.Tests
             var LoginPage = new ToolBarObjects(Driver);
             LoginPage.LoginForm();
             LoginPage.LoginPassAndSubmit(user);
-            Assert.IsTrue((LoginPage.AccountDropdown).Displayed, "User was not logged in, wrong username or password");
+            Assert.IsTrue(LoginPage.AccountDropdown.Displayed, "User was not logged in, wrong username or password");
             LoginPage.Logout();
-            Assert.IsTrue((LoginPage.Button_MyAccount).Displayed, "User was not logged out");
+            Assert.IsTrue(LoginPage.Button_MyAccount.Displayed, "User was not logged out");
         }
     }
 }

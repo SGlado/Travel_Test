@@ -1,6 +1,5 @@
 ﻿using NUnit.Framework;
 using OpenQA.Selenium;
-using System;
 using Travels_Test.Framework;
 using Travels_Test.PageObjects;
 
@@ -28,12 +27,12 @@ namespace Travels_Test.Tests
         [TestCase("3")]
         [TestCase("4")]
         [TestCase("5")]
-        public void StarGrade(string starGrade)
+        public void StarGrade(string starGradeNumber)
         {
-            var StarGrade = new Hotels(Driver);
-            StarGrade.ChangeStarGrade(starGrade);
-            Driver.WaitForMeDisplayed(StarGrade.ApplySearch, 20);
-            IWebElement StarGradeCheck = Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//input[@id ='{0}']", starGrade)));
+            Hotels starGrade = new Hotels(Driver);
+            starGrade.ChangeStarGradeNumber(starGradeNumber);
+            Driver.WaitForMeDisplayed(starGrade.ApplySearch, 20);
+            IWebElement StarGradeCheck = starGrade.StarGradeCheckNumber(starGradeNumber);
             Assert.IsTrue(StarGradeCheck.Selected, "Ooops!");
         }
     }
