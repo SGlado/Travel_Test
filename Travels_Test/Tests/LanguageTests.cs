@@ -5,13 +5,13 @@ using Travels_Test.PageObjects;
 namespace Travels_Test.Tests
 {
     [TestFixture]
-    public class LanguageTests : BaseTest
+    public class LanguageTests : SettingBrowsers
     {
         #region Setup
         [OneTimeSetUp]
-        public void Init()
+        public void CreateDriver()
         {
-            Driver = GetChromeDriver();
+            Driver = SettingBrowsers.Initialize();
             Driver.Manage().Window.Maximize();
             Driver.Navigate().GoToUrl("https://www.phptravels.net/");
         }

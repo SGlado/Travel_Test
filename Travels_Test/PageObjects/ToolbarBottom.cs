@@ -3,10 +3,10 @@ using System;
 
 namespace Travels_Test.PageObjects
 {
-    class Hotels
+    class ToolbarBottom
     {
         protected IWebDriver Driver { get; set; }
-        public Hotels(IWebDriver driver)
+        public ToolbarBottom(IWebDriver driver)
         {
             Driver = driver;
         }
@@ -30,6 +30,16 @@ namespace Travels_Test.PageObjects
         public IWebElement StarGradeCheckNumber(string checkStarGradeNumber)
         {
             return  Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//input[@id ='{0}']", checkStarGradeNumber)));
+        }
+        #endregion
+        #region NavigationCheck
+        /// <summary>
+        /// Verify Site Navigation on ToolbarBottom
+        /// </summary>
+        /// <param name="newPage"></param>
+        internal void NavigationCheck(string newPage, string newPageTitle)
+        {
+            Driver.FindElement(By.XPath(String.Format("//a[@title='{0}']", newPage))).Click();
         }
         #endregion
     }

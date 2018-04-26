@@ -6,13 +6,13 @@ using Travels_Test.PageObjects;
 namespace Travels_Test.Tests
 {
     [TestFixture]
-    public class CurrencyTests : BaseTest
+    public class CurrencyTests : SettingBrowsers
     {
         #region Setup
         [OneTimeSetUp]
-        public void Init()
+        public void CreateDriver()
         {
-            Driver = GetChromeDriver();
+            Driver = SettingBrowsers.Initialize();
             Driver.Manage().Window.Maximize();
             Driver.Navigate().GoToUrl("https://www.phptravels.net/");
         }

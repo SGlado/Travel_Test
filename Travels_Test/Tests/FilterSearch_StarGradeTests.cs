@@ -6,13 +6,13 @@ using Travels_Test.PageObjects;
 namespace Travels_Test.Tests
 {
     [TestFixture]
-    class FilterSearch_StarGradeTests : BaseTest
+    class FilterSearch_StarGradeTests : SettingBrowsers
     {
         #region Setup
         [OneTimeSetUp]
-        public void Init()
+        public void CreateDriver()
         {
-            Driver = GetChromeDriver();
+            Driver = SettingBrowsers.Initialize();
             Driver.Manage().Window.Maximize();
             Driver.Navigate().GoToUrl("https://www.phptravels.net/hotels");
         }
@@ -29,7 +29,7 @@ namespace Travels_Test.Tests
         [TestCase("5")]
         public void StarGrade(string starGradeNumber)
         {
-            Hotels starGrade = new Hotels(Driver);
+            ToolbarBottom starGrade = new ToolbarBottom(Driver);
             starGrade.ChangeStarGradeNumber(starGradeNumber);
             Driver.WaitForMeDisplayed(starGrade.ApplySearch, 20);
             IWebElement StarGradeCheck = starGrade.StarGradeCheckNumber(starGradeNumber);
