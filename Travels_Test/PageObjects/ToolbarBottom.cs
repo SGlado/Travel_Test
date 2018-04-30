@@ -15,9 +15,9 @@ namespace Travels_Test.PageObjects
         public IWebElement SelectStarGradeNumber;
         #endregion
 
-        #region Filter Search
+        #region Hotels Stats Filter Search
         /// <summary>
-        /// Filter --> Changing Hotel Star Count
+        /// Filter --> Filter by Hotel Star Count
         /// </summary>
         /// <param name="newStarGradeNumber"></param>
         public void ChangeStarGradeNumber(string newStarGradeNumber)
@@ -34,7 +34,7 @@ namespace Travels_Test.PageObjects
         #endregion
         #region NavigationCheck
         /// <summary>
-        /// Verify Site Navigation on ToolbarBottom
+        /// Verify Navigation on ToolbarBottom
         /// </summary>
         /// <param name="newPage"></param>
         internal void NavigationCheck(string newPage, string newPageTitle)

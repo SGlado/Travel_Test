@@ -1,16 +1,22 @@
 ﻿using OpenQA.Selenium;
 using System.Collections.Generic;
 using System.IO;
+using System.Reflection;
+using System;
+using CsvHelper.Configuration;
 
 namespace Travels_Test
 {
     public class Config
     {
         public IWebDriver Driver { get; set; }
-        public static string Browser;
-        public static void GetBrowserFromFile()
+        public string Browser;
+        public string Login;
+        public string Pass;
+        public string Username;
+        public void GetBrowserFromFile()
         {
-            var reader = new StreamReader(File.OpenRead(@"D:\HELP\AUTOMATION\SGlado\Travels_Test\Config.csv"));
+            var reader = new StreamReader(File.OpenRead(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\Config.csv"));
             List<string> column1 = new List<string>();
             while (!reader.EndOfStream)
             {
@@ -18,14 +24,10 @@ namespace Travels_Test
             }
             Browser = column1[3];
         }
-        public static string Login;
-        public static string Pass;
-        public static string Username;
-        public static void GetLoginFromFile()
+        public void GetLoginFromFile()
         {
-            var reader = new StreamReader(File.OpenRead(@"D:\HELP\AUTOMATION\SGlado\Travels_Test\Config.csv"));
+            var reader = new StreamReader(File.OpenRead(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location) + @"\Config.csv"));
             List<string> column1 = new List<string>();
-
             while (!reader.EndOfStream)
             {
                 column1.Add(reader.ReadLine());

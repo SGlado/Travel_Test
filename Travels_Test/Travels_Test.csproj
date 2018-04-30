@@ -80,12 +80,13 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Framework\Browsers.cs" />
+    <Compile Include="Framework\SettingBrowsers.cs" />
     <Compile Include="Framework\Config.cs" />
-    <Compile Include="Framework\BaseTest.cs" />
     <Compile Include="Framework\Waiting.cs" />
+    <Compile Include="PageObjects\Booking.cs" />
     <Compile Include="PageObjects\ToolbarBottom.cs" />
     <Compile Include="PageObjects\Toolbar.cs" />
+    <Compile Include="Tests\BookingRoom.cs" />
     <Compile Include="Tests\NavigationCheck.cs" />
     <Compile Include="Tests\FilterSearch_StarGradeTests.cs" />
     <Compile Include="Tests\LoginLogout_Tests.cs" />
@@ -94,6 +95,9 @@
     <Compile Include="Tests\LanguageTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Config.csv">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

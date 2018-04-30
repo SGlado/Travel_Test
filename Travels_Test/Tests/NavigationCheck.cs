@@ -1,28 +1,12 @@
 ﻿using NUnit.Framework;
-using System.Threading;
 using Travels_Test.Framework;
 using Travels_Test.PageObjects;
-using OpenQA.Selenium;
 
 namespace Travels_Test.Tests
 {
     [TestFixture]
     public class NavigationCheck : SettingBrowsers
     {
-        #region Setup
-        [OneTimeSetUp]
-        public void CreateDriver()
-        {
-            Driver = SettingBrowsers.Initialize();
-            Driver.Manage().Window.Maximize();
-            Driver.Navigate().GoToUrl("https://www.phptravels.net/");
-        }
-        [OneTimeTearDown]
-        public void Cleanup()
-        {
-            Driver.Quit();
-        }
-        #endregion
         [TestCase ("Hotels", "Hotels Listings")]
         [TestCase("Travelstart", "Flights")]
         [TestCase("Tours", "Tours Listings")]

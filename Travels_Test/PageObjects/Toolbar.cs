@@ -1,13 +1,11 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Threading;
 using Travels_Test.Framework;
 
 namespace Travels_Test.PageObjects
 {
     class ToolBarObjects : Config
     {
-        //protected IWebDriver Driver { get; set; }
         public ToolBarObjects(IWebDriver driver)
         {
             Driver = driver;
@@ -18,12 +16,16 @@ namespace Travels_Test.PageObjects
         public IWebElement Field_UserName => Driver.FindElement(By.XPath("//input[@placeholder='Email']"));
         public IWebElement Field_UserPassword => Driver.FindElement(By.XPath("//input[@placeholder='Password']"));
         public IWebElement Button_PushLogin => Driver.FindElement(By.XPath("//*[@id='loginfrm']//button[text()='Login']"));
-        public IWebElement AccountDropdown;
         public IWebElement Button_Logout => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()='  Logout']"));
         public IWebElement CurrencyDropdown => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//li[@id='li_myaccount']/following-sibling::li[@class='dropdown']"));
         public IWebElement LanguageDropdown => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//li[@id='li_myaccount']/following-sibling::ul[@class='nav navbar-nav']"));
         #endregion
         #region ToolBar
+        public IWebElement GetAccountDropdown(string username)
+        {
+            return Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()='{0}']", username)));
+        }
+
         /// <summary>
         /// Login Form Opens
         /// </summary>
@@ -37,9 +39,9 @@ namespace Travels_Test.PageObjects
         /// </summary>
         internal void LoginPassAndSubmit()
         {
-            Config.GetLoginFromFile();
+            GetLoginFromFile();
             string lg = Login;
-            string ps = Config.Pass;
+            string ps = Pass;
             Driver.WaitForMeDisplayed(Field_UserName, 20);
             Field_UserName.SendKeys(lg);
             Field_UserPassword.SendKeys(ps);
@@ -49,15 +51,14 @@ namespace Travels_Test.PageObjects
         /// <summary>
         /// User Logging Out
         /// </summary>
-        internal void Logout()
+        public void Logout()
         {
-            Config.GetLoginFromFile();
-            string un = Config.Username;
-            Thread.Sleep(3000);
-            AccountDropdown = Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()='{0}']", un)));
+            GetLoginFromFile();
+            string un = Username;
+            //Thread.Sleep(3000);
+            IWebElement AccountDropdown = GetAccountDropdown(un);
             AccountDropdown.Click();
             Button_Logout.Click();
-            Thread.Sleep(3000);
         }
         /// <summary>
         /// Change of Currency
