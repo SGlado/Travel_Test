@@ -73,7 +73,9 @@ namespace Travels_Test.PageObjects
         /// </summary>
         internal void ChangeLanguage(string newLanguage)
         {
+            Utilities.HighlighElement(Driver, LanguageDropdown);
             LanguageDropdown.Click();
+            Utilities.HighlighElement(Driver, Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@class='go-text-right changelang' and contains(text(), '{0}') ]", newLanguage))));
             Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@class='go-text-right changelang' and contains(text(), '{0}') ]", newLanguage))).Click();
         }
         #endregion

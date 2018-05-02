@@ -82,11 +82,13 @@
   <ItemGroup>
     <Compile Include="Framework\SettingBrowsers.cs" />
     <Compile Include="Framework\Config.cs" />
+    <Compile Include="Framework\Utilities.cs" />
     <Compile Include="Framework\Waiting.cs" />
     <Compile Include="PageObjects\Booking.cs" />
     <Compile Include="PageObjects\ToolbarBottom.cs" />
     <Compile Include="PageObjects\Toolbar.cs" />
     <Compile Include="Tests\BookingRoom.cs" />
+    <Compile Include="Tests\TrainingTest.cs" />
     <Compile Include="Tests\NavigationCheck.cs" />
     <Compile Include="Tests\FilterSearch_StarGradeTests.cs" />
     <Compile Include="Tests\LoginLogout_Tests.cs" />
