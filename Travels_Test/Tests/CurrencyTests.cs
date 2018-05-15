@@ -3,10 +3,10 @@ using Travels_Test.Framework;
 using Travels_Test.PageObjects;
 
 namespace Travels_Test.Tests
-{
+    {
     [TestFixture]
     public class CurrencyTests : SettingBrowsers
-    {
+        {
         [TestCase("USD", "USD")]
         [TestCase("GBP", "GBP")]
         [TestCase("SAR", "ريال")]
@@ -15,11 +15,11 @@ namespace Travels_Test.Tests
         [TestCase("INR", "INR")]
         [TestCase("CNY", "CNY")]
         [TestCase("TRY", "TURKISH")]
-            public void CurrencyTest(string currency, string expected)
+        public void CurrencyTest(string currency, string expected)
             {
-                var Currency = new ToolBarObjects(Driver);
-                Currency.ChangeCurrency(currency);
-                Assert.AreEqual(expected, Currency.CurrencyDropdown.Text, "Currency wasn't change to preffered on " + currency);
+            var Currency = new ToolBarObjects(Driver);
+            Currency.ChangeCurrency(currency);
+            Assert.AreEqual(expected, Currency.CurrencyDropdown.Text, "Currency wasn't change to preffered on " + currency);
             }
+        }
     }
-}

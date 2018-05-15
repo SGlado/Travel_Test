@@ -3,13 +3,13 @@ using OpenQA.Selenium.Interactions;
 using Travels_Test.Framework;
 
 namespace Travels_Test.PageObjects
-{
-    class Booking : SettingBrowsers
     {
-        public Booking(IWebDriver driver)
+    class Booking : SettingBrowsers
         {
+        public Booking(IWebDriver driver)
+            {
             Driver = driver;
-        }
+            }
         #region Locators
         public IWebElement PageHotels => Driver.FindElement(By.XPath("//a[@title='Hotels']"));
         public IWebElement Button_OpenHotelDetails => Driver.FindElement(By.XPath("//*[b='Rendezvous Hotels                  ']"));
@@ -33,7 +33,7 @@ namespace Travels_Test.PageObjects
         /// Booking room as a guest
         /// </summary>
         public void BookAnyRoom()
-        {
+            {
             PageHotels.Click();
             Button_OpenHotelDetails.Click();
             Actions actions = new Actions(Driver);
@@ -41,12 +41,12 @@ namespace Travels_Test.PageObjects
             actions.Perform();
             Button_BookRoom.Click();
             Button_BookAsAGuest.Click();
-        }
+            }
         /// <summary>
         /// Fill booking fors and submit
         /// </summary>
         public void GuestFormAndSubmit()
-        {
+            {
             Field_FirstName.SendKeys("TestFirstName");
             Field_Email.SendKeys("TestEmail@mail.com");
             Field_MobileNumber.SendKeys("1234567890");
@@ -60,7 +60,7 @@ namespace Travels_Test.PageObjects
             actions.MoveToElement(Button_Confirm_Booking);
             actions.Perform();
             Button_Confirm_Booking.Click();
-        }
+            }
         #endregion
+        }
     }
-}

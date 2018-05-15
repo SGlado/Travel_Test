@@ -2,14 +2,14 @@
 using System;
 
 namespace Travels_Test.PageObjects
-{
-    class ToolbarBottom
     {
+    class ToolbarBottom
+        {
         protected IWebDriver Driver { get; set; }
         public ToolbarBottom(IWebDriver driver)
-        {
+            {
             Driver = driver;
-        }
+            }
         #region Locators
         public IWebElement ApplySearch => Driver.FindElement(By.XPath("//*[@id='searchform']"));
         public IWebElement SelectStarGradeNumber;
@@ -21,16 +21,16 @@ namespace Travels_Test.PageObjects
         /// </summary>
         /// <param name="newStarGradeNumber"></param>
         public void ChangeStarGradeNumber(string newStarGradeNumber)
-        {
+            {
             SelectStarGradeNumber = Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//*[@for ='{0}']", newStarGradeNumber)));
             StarGradeCheckNumber(newStarGradeNumber);
             SelectStarGradeNumber.Click();
             ApplySearch.Click();
-        }
+            }
         public IWebElement StarGradeCheckNumber(string checkStarGradeNumber)
-        {
-            return  Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//input[@id ='{0}']", checkStarGradeNumber)));
-        }
+            {
+            return Driver.FindElement(By.XPath(String.Format("//div[@class='col-md-3 hidden-sm hidden-xs']//input[@id ='{0}']", checkStarGradeNumber)));
+            }
         #endregion
         #region NavigationCheck
         /// <summary>
@@ -38,9 +38,15 @@ namespace Travels_Test.PageObjects
         /// </summary>
         /// <param name="newPage"></param>
         internal void NavigationCheck(string newPage, string newPageTitle)
-        {
+            {
             Driver.FindElement(By.XPath(String.Format("//a[@title='{0}']", newPage))).Click();
-        }
+            }
         #endregion
+        //#region FlightSearch
+        //internal void FlightSearch(string newWayType)
+        //    {
+        //    Driver.FindElement(By.XPath(String.Format("//*[@class='ng-scope' and contains(text(), '{0}')]", newWayType))).Click();
+        //    }
+        //#endregion
+        }
     }
-}
