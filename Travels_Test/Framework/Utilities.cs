@@ -1,12 +1,13 @@
-﻿using OpenQA.Selenium;
+﻿using NUnit.Framework;
+using OpenQA.Selenium;
 using System;
+using System.IO;
 using System.Threading;
 
 namespace Travels_Test.Framework
     {
     public class Utilities
         {
-        public static IWebDriver Driver { get; set; }
         #region Highlight Element
         public static void HighlighElement(IWebDriver driver, IWebElement element)
             {
@@ -22,11 +23,15 @@ namespace Travels_Test.Framework
             }
         #endregion
         #region Screenshot
-        public static void TakeScreenshot(String fileName)
+        public static void TakeScreenshot(IWebDriver driver, String fileName, String directoryName)
             {
-            ITakesScreenshot screenshotHandler = Driver as ITakesScreenshot;
+            ITakesScreenshot screenshotHandler = driver as ITakesScreenshot;
             Screenshot screenshot = screenshotHandler.GetScreenshot();
-            screenshot.SaveAsFile(@"D:\HELP\AUTOMATION\SGlado\Travels_Test\FailureScreenshots\" + fileName + ".png", ScreenshotImageFormat.Png);
+            string filename = fileName + DateTime.Now.ToString(" - dd_MMMM_hh_mm_ss_tt") + ".png";
+            string newfolder = Directory.CreateDirectory(Path.Combine(@"D:\HELP\AUTOMATION\SGlado\Travels_Test\FailureScreenshots\", directoryName)).FullName.ToString() ;
+            
+            string fullPath = Path.Combine(newfolder, filename);
+            screenshot.SaveAsFile(fullPath);
             }
         #endregion
         }

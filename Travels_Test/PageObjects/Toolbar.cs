@@ -4,7 +4,7 @@ using Travels_Test.Framework;
 
 namespace Travels_Test.PageObjects
     {
-    class ToolBarObjects : Config
+    class ToolBarObjects : SettingBrowsers
         {
         #region Locators
         public IWebElement Button_MyAccount => Driver.FindElement(By.XPath("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()=' My Account ']"));
@@ -23,7 +23,7 @@ namespace Travels_Test.PageObjects
             }
         public IWebElement GetAccountDropdown(string username)
             {
-            return Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()='{0}']", Config.Username)));
+            return Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//*[text()=' {0}']", Config.Instance.Username)));
             }
 
         /// <summary>
@@ -39,9 +39,8 @@ namespace Travels_Test.PageObjects
         /// </summary>
         internal void LoginPassAndSubmit()
             {
-            Config config = new Config();
-            string lg = Config.Login;
-            string ps = Config.Pass;
+            string lg = Config.Instance.Login;
+            string ps = Config.Instance.Pass;
             Driver.WaitForMeDisplayed(Field_UserName, 20);
             Field_UserName.SendKeys(lg);
             Field_UserPassword.SendKeys(ps);
@@ -53,8 +52,8 @@ namespace Travels_Test.PageObjects
         /// </summary>
         public void Logout()
             {
-            Config config = new Config();
-            string un = Config.Username;
+            //Config config = Config.Instance;
+            string un = Config.Instance.Username;
             IWebElement AccountDropdown = GetAccountDropdown(un);
             AccountDropdown.Click();
             Button_Logout.Click();
@@ -72,11 +71,11 @@ namespace Travels_Test.PageObjects
         /// </summary>
         internal void ChangeLanguage(string newLanguage)
             {
-            Utilities.HighlighElement(Driver, LanguageDropdown);
+            //Utilities.HighlighElement(Driver, LanguageDropdown);
+            Driver.WaitForMeDisplayed(LanguageDropdown);
             LanguageDropdown.Click();
-            Utilities.HighlighElement(Driver, Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@class='go-text-right changelang' and contains(text(), '{0}') ]", newLanguage))));
+            //Utilities.HighlighElement(Driver, Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@class='go-text-right changelang' and contains(text(), '{0}') ]", newLanguage))));
             Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@class='go-text-right changelang' and contains(text(), '{0}') ]", newLanguage))).Click();
-            Utilities.TakeScreenshot(newLanguage);
             }
         #endregion
         }

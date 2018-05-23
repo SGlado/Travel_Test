@@ -9,11 +9,11 @@ using System.Reflection;
 
 namespace Travels_Test.Framework
     {
-    public class SettingBrowsers : Config
+    public class SettingBrowsers
         {
         #region Browser
         /// <summary>
-        /// Get appropriate browser from config file
+        /// Select appropriate browser from config file
         /// </summary>
         /// <param name="browser"></param>
         /// <returns></returns>
@@ -37,10 +37,10 @@ namespace Travels_Test.Framework
                 return new ChromeDriver(outPutDirectory);
                 }
             }
+        public IWebDriver Driver;
         public IWebDriver Initialize()
             {
-            Config config = new Config();
-            IWebDriver driver = OpenBrowser(Browser);
+            IWebDriver driver = OpenBrowser(Config.Instance.Browser);
             return driver;
             }
         #endregion

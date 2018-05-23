@@ -1,4 +1,6 @@
 ﻿using NUnit.Framework;
+using OpenQA.Selenium;
+using System;
 using Travels_Test.Framework;
 using Travels_Test.PageObjects;
 
@@ -17,6 +19,7 @@ namespace Travels_Test.Tests
             {
             var Language = new ToolBarObjects(Driver);
             Language.ChangeLanguage(language);
+            Utilities.TakeScreenshot(Driver, language, TestContext.CurrentContext.Test.Name);
             Assert.AreEqual(expected, Language.LanguageDropdown.Text, "Language wasn't change to preffered on " + language);
             }
         }
