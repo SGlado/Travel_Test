@@ -27,7 +27,6 @@ namespace Travels_Test.PageObjects
 		public IWebElement Button_Confirm_Booking => Driver.FindElement(By.XPath("//*[@class='btn btn-action btn-lg btn-block completebook']"));
 		public IWebElement Button_PayOnArrival => Driver.FindElement(By.XPath("//*[@class='btn btn-default arrivalpay']"));
 		#endregion
-
 		#region Booking Room
 		/// <summary>
 		/// Booking room as a guest

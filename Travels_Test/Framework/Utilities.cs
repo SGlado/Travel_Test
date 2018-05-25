@@ -29,7 +29,6 @@ namespace Travels_Test.Framework
 			ITakesScreenshot screenshotHandler = driver as ITakesScreenshot;
 			Screenshot screenshot = screenshotHandler.GetScreenshot();
 			string filename = fileName + DateTime.Now.ToString(" - dd_MMMM_hh_mm_ss_tt") + ".png";
-			//string directoryname = TestContext.CurrentContext.Test.MethodName;
 			string newfolder = Directory.CreateDirectory(Path.Combine(@"D:\HELP\AUTOMATION\SGlado\Travels_Test\FailureScreenshots\", directoryName)).FullName.ToString();
 			string fullPath = Path.Combine(newfolder, filename);
 			screenshot.SaveAsFile(fullPath);

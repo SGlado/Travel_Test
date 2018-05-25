@@ -1,6 +1,5 @@
 ﻿using OpenQA.Selenium;
 using System;
-using System.Threading;
 using Travels_Test.Framework;
 
 namespace Travels_Test.PageObjects

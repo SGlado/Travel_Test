@@ -44,6 +44,7 @@ namespace Travels_Test.Framework
 			return driver;
 		}
 		#endregion
+		#region Setup
 		[OneTimeSetUp]
 		public void CreateDriver()
 		{
@@ -57,5 +58,6 @@ namespace Travels_Test.Framework
 		{
 			Driver.Quit();
 		}
+		#endregion
 	}
 }

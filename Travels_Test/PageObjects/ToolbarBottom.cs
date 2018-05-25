@@ -14,7 +14,6 @@ namespace Travels_Test.PageObjects
 		public IWebElement ApplySearch => Driver.FindElement(By.XPath("//*[@id='searchform']"));
 		public IWebElement SelectStarGradeNumber;
 		#endregion
-
 		#region Hotels Stats Filter Search
 		/// <summary>
 		/// Filter --> Filter by Hotel Star Count
@@ -42,11 +41,13 @@ namespace Travels_Test.PageObjects
 			Driver.FindElement(By.XPath(String.Format("//a[@title='{0}']", newPage))).Click();
 		}
 		#endregion
-		//#region FlightSearch
-		//internal void FlightSearch(string newWayType)
-		//    {
-		//    Driver.FindElement(By.XPath(String.Format("//*[@class='ng-scope' and contains(text(), '{0}')]", newWayType))).Click();
-		//    }
-		//#endregion
+		#region FlightSearch
+		internal void FlightSearch(string newWayType)
+		{
+			Driver.SwitchTo().Frame("travelstartIframe-dd7d2f33-38c3-4c69-baac-56d16157023b");
+			Driver.FindElement(By.XPath(String.Format("//label/span[@class='ng-scope' and contains(text(), '{0}')]", newWayType))).Click();
+			Driver.SwitchTo().DefaultContent();
+		}
+		#endregion
 	}
 }
