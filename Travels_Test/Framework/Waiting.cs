@@ -19,10 +19,24 @@ namespace Travels_Test.Framework
 				return false;
 			}
 		}
-		//public static void WaitForMeTextDisplayed(this IWebDriver Driver, string textToBePresent, int seconds = 30)
+		public static bool WaitForMeTextDisplayed(this IWebDriver Driver, IWebElement element, string textToBePresent, int seconds = 30)
+		{
+			WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(seconds));
+			try
+			{
+				wait.Until(p => element.Text.Contains(textToBePresent) == true);
+				return true;
+			}
+			catch
+			{
+				return false;
+			}
+		}
+
+		//public static void WaitForMeTextDisplayed(this IWebDriver Driver, IWebElement element, string textToBePresent, int seconds = 30)
 		//{
 		//	WebDriverWait wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(seconds));
-		//	wait.Until(p => textToBePresent.Contains(textToBePresent) == true);
+		//	wait.Until(p => element.Text.Contains(textToBePresent) == true);
 		//}
 	}
 }

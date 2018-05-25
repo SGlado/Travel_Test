@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using System;
+using System.Threading;
 using Travels_Test.Framework;
 
 namespace Travels_Test.PageObjects
@@ -63,7 +64,9 @@ namespace Travels_Test.PageObjects
 		/// </summary>
 		internal void ChangeCurrency(string newCurrency)
 		{
+			Driver.WaitForMeDisplayed(CurrencyDropdown, 10);
 			CurrencyDropdown.Click();
+			Thread.Sleep(500);
 			Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@onclick='change_currency(this)' and contains(text(), '{0}') ]", newCurrency))).Click();
 		}
 		/// <summary>
@@ -74,6 +77,7 @@ namespace Travels_Test.PageObjects
 			//Utilities.HighlighElement(Driver, LanguageDropdown);
 			Driver.WaitForMeDisplayed(LanguageDropdown);
 			LanguageDropdown.Click();
+			Thread.Sleep(500);
 			//Utilities.HighlighElement(Driver, Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@class='go-text-right changelang' and contains(text(), '{0}') ]", newLanguage))));
 			Driver.FindElement(By.XPath(String.Format("//div[@class='tbar-top hidden-sm hidden-xs']//a[@class='go-text-right changelang' and contains(text(), '{0}') ]", newLanguage))).Click();
 		}

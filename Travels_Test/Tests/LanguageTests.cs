@@ -18,7 +18,7 @@ namespace Travels_Test.Tests
 		{
 			var Language = new ToolBarObjects(Driver);
 			Language.ChangeLanguage(language);
-			Thread.Sleep(2000);
+			Driver.WaitForMeTextDisplayed(Language.LanguageDropdown, expected);
 			Assert.AreEqual(expected, Language.LanguageDropdown.Text, "Language wasn't change to preffered on " + language);
 		}
 	}

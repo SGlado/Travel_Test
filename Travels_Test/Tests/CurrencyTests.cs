@@ -20,8 +20,7 @@ namespace Travels_Test.Tests
 		{
 			var Currency = new ToolBarObjects(Driver);
 			Currency.ChangeCurrency(currency);
-			//Driver.WaitForMeTextDisplayed(currency);
-			Thread.Sleep(10000);
+			Driver.WaitForMeTextDisplayed(Currency.CurrencyDropdown, expected);
 			Assert.AreEqual(expected, Currency.CurrencyDropdown.Text, "Currency wasn't change to preffered on " + currency);
 		}
 	}
